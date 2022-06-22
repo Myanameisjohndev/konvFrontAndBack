@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const DepositAccount: Schema = new Schema(
+const WithdrawAccount: Schema = new Schema(
   {
     cpf: { type: String, required: true },
     value: { type: Number },
@@ -10,4 +10,4 @@ const DepositAccount: Schema = new Schema(
   }
 );
 
-export default mongoose.model("DepositAccount", DepositAccount);
+export default mongoose.model("WithdrawAccount", WithdrawAccount);

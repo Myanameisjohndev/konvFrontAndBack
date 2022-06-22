@@ -2,13 +2,15 @@ import { Router } from "express";
 
 import { CreateDepositControler } from "../../controllers/operations/deposit";
 import { WithdrawController } from "../../controllers/operations/withdraw";
-import { searchUserAccount } from "../../middlewares/searchUserAccount";
+import { operationCpfValidator } from "../../middlewares/operationCpfValidator";
+import { validValueOperation } from "../../middlewares/validValueOperation";
 
 const operationsRoutes = Router();
 
 operationsRoutes.post(
   "/deposit/:id",
-  searchUserAccount,
+  operationCpfValidator,
+  validValueOperation,
   (request, response) => {
     return CreateDepositControler(request, response);
   }
@@ -16,13 +18,14 @@ operationsRoutes.post(
 
 operationsRoutes.post(
   "/withdraw/:id",
-  searchUserAccount,
+  operationCpfValidator,
+  validValueOperation,
   (request, response) => {
     return WithdrawController(request, response);
   }
 );
 
-operationsRoutes.post("/extract", searchUserAccount, (request, response) => {
+operationsRoutes.post("/extract", (request, response) => {
   return response.send();
 });
 

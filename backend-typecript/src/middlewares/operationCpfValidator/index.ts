@@ -9,37 +9,30 @@ interface IUser {
   account_value: number;
   id: string;
 }
-async function searchUserAccount(
+async function operationCpfValidator(
   request: Request,
   response: Response,
   next: NextFunction
 ) {
-  const { cpf, value } = request.body;
+  const { cpf } = request.body;
   const { id } = request.params;
 
-  if (!value) {
-    return response.status(400).send({ error: "Informe um valor" });
-  }
-  if (Number(value) <= 0) {
-    return response.status(400).send({ error: "Informe um valor válido" });
-  }
   if (!cpf) {
     return response.status(400).send({ error: "Informe um cpf" });
   }
 
   const validMongoCpf = (await CreateUser.findOne({ cpf })) as IUser;
 
+  if (!validMongoCpf) {
+    return response.status(400).send({ error: "Usuário não encontrado" });
+  }
+
   if (validMongoCpf.id !== id) {
     return response.status(400).send({ error: "Não autorizado" });
   }
 
-  if (!validMongoCpf) {
-    return response.status(400).send({ error: "Ususário não encontrado!" });
-  }
-
   request.returnUser = validMongoCpf;
-
   return next();
 }
 
-export { searchUserAccount };
+export { operationCpfValidator };
