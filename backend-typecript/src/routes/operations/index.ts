@@ -1,8 +1,8 @@
 import { Router } from "express";
 
 import { CreateDepositControler } from "../../controllers/operations/deposit";
+import { WithdrawController } from "../../controllers/operations/withdraw";
 import { searchUserAccount } from "../../middlewares/searchUserAccount";
-import { verifyExistAccountCpf } from "../../middlewares/validCpf";
 
 const operationsRoutes = Router();
 
@@ -15,19 +15,15 @@ operationsRoutes.post(
 );
 
 operationsRoutes.post(
-  "/withdraw",
-  verifyExistAccountCpf,
+  "/withdraw/:id",
+  searchUserAccount,
   (request, response) => {
-    return response.send();
+    return WithdrawController(request, response);
   }
 );
 
-operationsRoutes.post(
-  "/extract",
-  verifyExistAccountCpf,
-  (request, response) => {
-    return response.send();
-  }
-);
+operationsRoutes.post("/extract", searchUserAccount, (request, response) => {
+  return response.send();
+});
 
 export { operationsRoutes };
