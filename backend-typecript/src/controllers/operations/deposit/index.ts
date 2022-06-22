@@ -7,10 +7,12 @@ async function CreateDepositControler(request: Request, response: Response) {
   const { returnUser } = request;
   const { cpf, value } = request.body;
 
-  await CreateUser.updateOne({
-    cpf: returnUser.cpf,
-    account_value: Number(returnUser.account_value) + Number(value),
-  }).then(async () => {
+  await CreateUser.findOneAndUpdate(
+    { cpf },
+    {
+      account_value: Number(returnUser.account_value) + Number(value),
+    }
+  ).then(async () => {
     await UserDepositAccount.create({ value, cpf })
       .then(() => {
         return response

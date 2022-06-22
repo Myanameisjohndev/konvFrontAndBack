@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import CreateUser from "../../../models/user/UserBankAccount";
-import UserDepositAccount from "../../../models/withdraw/UserDepositAccount";
+import UserWithdrawAccount from "../../../models/withdraw/UserWithdrawAccount";
 
 const WithdrawController = async (request: Request, response: Response) => {
   const { returnUser } = request;
@@ -13,11 +13,13 @@ const WithdrawController = async (request: Request, response: Response) => {
       .send({ error: "Você não possui este valor em conta" });
   }
 
-  await CreateUser.updateOne({
-    cpf: returnUser.cpf,
-    account_value: returnUser.account_value - Number(value),
-  }).then(async () => {
-    await UserDepositAccount.create({ value, cpf })
+  await CreateUser.findOneAndUpdate(
+    { cpf },
+    {
+      account_value: Number(returnUser.account_value) - Number(value),
+    }
+  ).then(async () => {
+    await UserWithdrawAccount.create({ value, cpf })
       .then(() => {
         return response
           .status(200)
