@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { CreateUserControler } from "../../controllers/user";
+import { CreateUserControler } from "../../controllers/user/create";
 import { verifyExistAccountCpf } from "../../middlewares/validCpf";
 
 const userRoutes = Router();

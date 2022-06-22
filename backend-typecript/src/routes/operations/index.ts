@@ -1,19 +1,33 @@
 import { Router } from "express";
 
+import { CreateDepositControler } from "../../controllers/operations/deposit";
+import { searchUserAccount } from "../../middlewares/searchUserAccount";
 import { verifyExistAccountCpf } from "../../middlewares/validCpf";
 
 const operationsRoutes = Router();
 
-operationsRoutes.get("/deposit", (request, response) => {
-  return response.send({ message: "operationsRoutes" });
-});
+operationsRoutes.post(
+  "/deposit/:id",
+  searchUserAccount,
+  (request, response) => {
+    return CreateDepositControler(request, response);
+  }
+);
 
-operationsRoutes.post("/post", verifyExistAccountCpf, (request, response) => {
-  const { returnCpf } = request;
+operationsRoutes.post(
+  "/withdraw",
+  verifyExistAccountCpf,
+  (request, response) => {
+    return response.send();
+  }
+);
 
-  console.log(returnCpf);
-
-  return response.send({ returnCpf });
-});
+operationsRoutes.post(
+  "/extract",
+  verifyExistAccountCpf,
+  (request, response) => {
+    return response.send();
+  }
+);
 
 export { operationsRoutes };

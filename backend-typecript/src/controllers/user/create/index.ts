@@ -1,9 +1,16 @@
 import { Request, Response } from "express";
 
-import CreateUser from "../../models/user/UserBankAccount";
+import CreateUser from "../../../models/user/UserBankAccount";
+
+interface IUser {
+  cpf: string;
+  name: string;
+  password: string;
+  account_value: number;
+}
 
 async function CreateUserControler(request: Request, response: Response) {
-  const { cpf, name, password } = request.body;
+  const { cpf, name, password }: IUser = request.body;
 
   const user = {
     cpf,
@@ -20,4 +27,4 @@ async function CreateUserControler(request: Request, response: Response) {
   }
 }
 
-export { CreateUserControler };
+export { CreateUserControler, IUser };
