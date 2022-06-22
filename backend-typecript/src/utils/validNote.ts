@@ -1,43 +1,49 @@
 export const ValidNote = (withdraw: number) => {
-  let contador100 = 0;
-  let contador50 = 0;
-  let contador20 = 0;
-  let contador10 = 0;
-  let contador5 = 0;
-  let contador2 = 0;
+  let cont100 = 0;
+  let cont50 = 0;
+  let cont20 = 0;
+  let cont10 = 0;
+  let cont5 = 0;
+  let cont2 = 0;
+  let cont1 = 0;
   let localValue = withdraw;
   if (localValue !== 0) {
     while (localValue >= 100) {
-      contador100 += 1;
+      cont100 += 1;
       localValue -= 100;
     }
     while (localValue >= 50) {
-      contador50 += 1;
+      cont50 += 1;
       localValue -= 50;
     }
     while (localValue >= 20) {
-      contador20 += 1;
+      cont20 += 1;
       localValue -= 20;
     }
     while (localValue >= 10) {
-      contador10 += 1;
+      cont10 += 1;
       localValue -= 10;
     }
     while (localValue >= 5) {
-      contador5 += 1;
+      cont5 += 1;
       localValue -= 5;
     }
     while (localValue >= 2) {
-      contador2 += 1;
+      cont2 += 1;
       localValue -= 2;
+    }
+    while (localValue >= 1) {
+      cont1 += 1;
+      localValue -= 1;
     }
   }
   return [
-    { note100: contador100 },
-    { note50: contador50 },
-    { note20: contador20 },
-    { note10: contador10 },
-    { note5: contador5 },
-    { note2: contador2 },
+    { note100: cont100 },
+    { note50: cont50 },
+    { note20: cont20 },
+    { note10: cont10 },
+    { note5: cont5 },
+    { note2: cont2 },
+    { note1: cont1 },
   ];
 };

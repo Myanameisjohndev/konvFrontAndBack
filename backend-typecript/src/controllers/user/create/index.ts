@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import CreateUser from "../../../models/user/UserBankAccount";
 
-interface IUser {
+export interface IUser {
   cpf: string;
   name: string;
   password: string;
@@ -27,4 +27,4 @@ async function CreateUserControler(request: Request, response: Response) {
   }
 }
 
-export { CreateUserControler, IUser };
+export { CreateUserControler };
