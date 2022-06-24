@@ -1,8 +1,11 @@
-import RoutesAplication from "./routes";
+import { ContextProvider } from './Context';
+import RoutesAplication from './routes';
 
 function App() {
   return (
-    <RoutesAplication/>
+    <ContextProvider>
+      <RoutesAplication/>
+    </ContextProvider>
   );
 }
 
