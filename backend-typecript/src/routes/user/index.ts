@@ -6,11 +6,15 @@ import { verifyExistAccountCpf } from "../../middlewares/validCpf";
 
 const userRoutes = Router();
 
-userRoutes.post("/", verifyExistAccountCpf, async (request, response) => {
-  return CreateUserControler(request, response);
-});
+userRoutes.post(
+  "/register",
+  verifyExistAccountCpf,
+  async (request, response) => {
+    return CreateUserControler(request, response);
+  }
+);
 
-userRoutes.post("/login", async (request, response) => {
+userRoutes.get("/login/:password/:cpf", async (request, response) => {
   return LoginUserControler(request, response);
 });
 

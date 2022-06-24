@@ -4,7 +4,7 @@ import CreateUser from "../../../models/user/UserBankAccount";
 import { IUser } from "../create";
 
 async function LoginUserControler(request: Request, response: Response) {
-  const { cpf, password }: IUser = request.body;
+  const { cpf, password }: IUser = request.params;
 
   try {
     const user = (await CreateUser.findOne({ cpf })) as IUser;
