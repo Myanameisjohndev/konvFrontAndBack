@@ -1,17 +1,16 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "../pages/Dashboard";
-import NotFound from "../pages/NotFound";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const AppRoutesAplication = () => {
-    return (
+import Dashboard from '../pages/Dashboard';
+import NotFound from '../pages/NotFound';
+
+const AppRoutesAplication = () => (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
-    )
-}
+);
 
 export default AppRoutesAplication;
