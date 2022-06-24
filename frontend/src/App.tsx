@@ -1,7 +1,8 @@
+import RoutesAplication from "./routes";
 
 function App() {
   return (
-    <div ></div>
+    <RoutesAplication/>
   );
 }
 
