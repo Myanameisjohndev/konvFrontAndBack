@@ -5,7 +5,8 @@ import CreateUser from "../../../models/user/UserBankAccount";
 
 async function CreateDepositControler(request: Request, response: Response) {
   const { returnUser } = request;
-  const { cpf, value } = request.body;
+  const { value } = request.body;
+  const { cpf } = request.params;
 
   await CreateUser.findOneAndUpdate(
     { cpf },

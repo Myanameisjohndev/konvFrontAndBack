@@ -6,7 +6,8 @@ import { ValidNote } from "../../../utils/validNote";
 
 const WithdrawController = async (request: Request, response: Response) => {
   const { returnUser } = request;
-  const { value, cpf } = request.body;
+  const { value } = request.body;
+  const { cpf } = request.params;
 
   if (Number(value) > returnUser.account_value) {
     return response

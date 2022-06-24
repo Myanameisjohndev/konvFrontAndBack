@@ -9,7 +9,7 @@ import { validValueOperation } from "../../middlewares/validValueOperation";
 const operationsRoutes = Router();
 
 operationsRoutes.post(
-  "/deposit/:id",
+  "/deposit/:cpf",
   operationCpfValidator,
   validValueOperation,
   (request, response) => {
@@ -18,7 +18,7 @@ operationsRoutes.post(
 );
 
 operationsRoutes.post(
-  "/withdraw/:id",
+  "/withdraw/:cpf",
   operationCpfValidator,
   validValueOperation,
   (request, response) => {
@@ -27,7 +27,7 @@ operationsRoutes.post(
 );
 
 operationsRoutes.get(
-  "/extract/:id",
+  "/extract/:cpf",
   operationCpfValidator,
   (request, response) => {
     return ExtractControler(request, response);

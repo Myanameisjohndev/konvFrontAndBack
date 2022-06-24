@@ -5,7 +5,7 @@ import Withdraw from "../../../models/withdraw/UserWithdrawAccount";
 
 async function ExtractControler(request: Request, response: Response) {
   const { returnUser } = request;
-  const { cpf } = request.body;
+  const { cpf } = request.params;
   const Withdraws = await Withdraw.find({ cpf });
   const Deposits = await Deposit.find({ cpf });
   return response.status(200).send({
