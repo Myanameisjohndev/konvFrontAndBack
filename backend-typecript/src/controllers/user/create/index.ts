@@ -8,6 +8,7 @@ export interface IUser {
   name: string;
   password: string;
   account_value: number;
+  createdAt: Date;
 }
 
 async function CreateUserControler(request: Request, response: Response) {
