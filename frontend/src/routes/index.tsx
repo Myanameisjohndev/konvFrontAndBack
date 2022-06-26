@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { Children, ReactNode, useEffect } from 'react';
 import {
-  BrowserRouter, Routes, Route, useNavigate, Navigate, Outlet,
+  BrowserRouter, Routes, Route, Navigate, Outlet,
 } from 'react-router-dom';
 
 import { useContextApp } from '../Context';
@@ -10,6 +9,7 @@ import Deposit from '../pages/Deposit';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
 import Signup from '../pages/Signup';
+import Withdraw from '../pages/Withdraw';
 
 const AppRoutesAplication = () => {
   const { user } = useContextApp();
@@ -30,6 +30,7 @@ const AppRoutesAplication = () => {
         <Route element={<PrivateRoute redirectTo="/"/>}>
             <Route path="/dashboard"element={<Dashboard />}/>
             <Route path="/dashboard/deposit"element={ <Deposit />}/>
+            <Route path="/dashboard/withdraw"element={ <Withdraw />}/>
         </Route>
         <Route element={<Public redirectTo="/dashboard"/>}>
           <Route path="/" element={<Login />} />

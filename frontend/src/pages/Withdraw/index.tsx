@@ -12,7 +12,7 @@ import {
   Container, HeaderDashboard, Text, Content, IconNav, Row, AreaCard, FormOperation,
 } from './styles';
 
-const Deposit = () => {
+const Withdraw = () => {
   const { user, setUser } = useContextApp();
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState<string>('');
@@ -26,11 +26,13 @@ const Deposit = () => {
 
   const deposit = async () => {
     if (!value) {
-      alert('Informe um valor para depositar');
+      alert('Informe um valor para sacar');
+    } else if (Number(value) > Number(user?.account_value)) {
+      alert('Você não possui esse valor em conta');
     } else {
-      const depositAccount = await api.post(`/operations/deposit/${user?.cpf}`, { value });
-      if (depositAccount.status === 200) {
-        const valueAccount = Number(user?.account_value) + Number(value);
+      const withdraw = await api.post(`/operations/withdraw/${user?.cpf}`, { value });
+      if (withdraw.status === 200) {
+        const valueAccount = Number(user?.account_value) - Number(value);
         if (user) {
           const newUser = { ...user, account_value: valueAccount };
           setUser(newUser);
@@ -45,7 +47,7 @@ const Deposit = () => {
     <ContainerAuth>
       <Container>
       <HeaderDashboard>
-        <Text>Faça seus depósitos</Text>
+        <Text>Faça seus saques</Text>
         </HeaderDashboard>
         <Content>
           <Row>
@@ -65,7 +67,7 @@ const Deposit = () => {
                     onChange={(e) => setValue(e.target.value)}
                   />
                 </InputContainer>
-                <Button onClick={deposit}>Depositar</Button>
+                <Button onClick={deposit}>Sacar</Button>
               </FormOperation>
             </AreaCard>
             </Row>
@@ -75,4 +77,4 @@ const Deposit = () => {
   );
 };
 
-export default Deposit;
+export default Withdraw;
