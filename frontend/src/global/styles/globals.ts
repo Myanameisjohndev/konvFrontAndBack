@@ -25,7 +25,7 @@ export const Header = styled.div`
   margin-bottom: 50px;
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled.h6`
   color: ${({ theme }) => theme.COLORS.COLOR_2};
 
   @media(max-width: 800px) {

@@ -11,6 +11,7 @@ export default {
     WHITE: '#FFFFFF',
     GREY: '#CCCCCC',
     DARK_GREY: '#2c2f33',
+    DARK_GREY_SECONDARY: '#42454A',
     COLOR_1: '#ee7752',
     COLOR_2: '#e73c7e',
     COLOR_3: '#23a6d5',

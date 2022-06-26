@@ -27,3 +27,29 @@ export const Icon = styled.img`
   margin: 10px;
   cursor: pointer;
 `;
+
+export const NavOption = styled.h1`
+  color: ${({ theme }) => theme.COLORS.WHITE};
+  font-weight: 400;
+  height: 40px;
+  font-size: 15px;
+  text-align: center;
+  transition: 0.3s all;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media(max-width: 800px) {
+    font-size: 15px;
+  }
+  @media(max-width: 600px) {
+    font-size: 10px;
+  }
+  @media(max-width: 300px) {
+    font-size: 5px;
+  }
+
+  &:hover{
+    background-color: ${({ theme }) => theme.COLORS.DARK_GREY_SECONDARY};
+  }
+
+`;
