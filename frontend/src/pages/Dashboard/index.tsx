@@ -1,10 +1,37 @@
-import { H1 } from '../../global/styles/styled-components-globals';
-import { Container } from './styles';
+import { useEffect, useState } from 'react';
 
-const Dashboard = () => (
-    <Container>
-      <H1>Dashboard</H1>
-    </Container>
-);
+import Bars from '../../assets/bars-solid.svg';
+import Navbar from '../../Components/Navbar';
+import { useContextApp } from '../../Context';
+import { H1, ContainerAuth } from '../../global/styles/globals';
+import {
+  Container, HeaderDashboard, Text, TextSecondary, RowText, Content, IconNav,
+} from './styles';
+
+const Dashboard = () => {
+  const { user } = useContextApp();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <ContainerAuth>
+      <Container>
+      <HeaderDashboard>
+        <RowText>
+            <Text>Seja bem vindo</Text>
+            <TextSecondary>&nbsp;{user?.name}</TextSecondary>
+        </RowText>
+        <Text>Gerencie suas operações de forma mais eficaz</Text>
+        </HeaderDashboard>
+        <Content>
+            {!open ? (
+              <IconNav src={Bars} onClick={() => setOpen(true)}/>
+            )
+              : <Navbar open={open} setOpen={setOpen}/>
+            }
+        </Content>
+      </Container>
+    </ContainerAuth>
+  );
+};
 
 export default Dashboard;

@@ -17,6 +17,7 @@
         "eslint-plugin-import-helpers"
     ],
     "rules": {
+      "no-alert": "off",
       "camelcase": "off",
 			"import/no-unresolved": "error",
 			"@typescript-eslint/naming-convention": [

@@ -1,13 +1,12 @@
-import { type } from 'os';
 import React, {
-  useState, useContext, createContext, ReactNode, SetStateAction, Dispatch,
+  useState, useContext, createContext, ReactNode, SetStateAction, Dispatch, useEffect,
 } from 'react';
 
 interface IContextProps {
   children: ReactNode;
 }
 
-type User = {
+export type User = {
   name: string,
   cpf: string,
   account_value: number,
@@ -22,6 +21,14 @@ const Context = createContext({} as ContextData);
 
 function ContextProvider({ children }: IContextProps) {
   const [user, setUser] = useState<User>();
+
+  useEffect(() => {
+    const localUser = localStorage.getItem('token');
+    if (localUser) {
+      // console.log(JSON.parse(localUser));
+      setUser(JSON.parse(localUser));
+    }
+  }, []);
 
   return (
     <Context.Provider value={{ user, setUser }}>
