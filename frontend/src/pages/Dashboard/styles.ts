@@ -128,6 +128,7 @@ export const CardValueTextSecondary = styled.h3`
 export const AreaCard = styled.div`
   width: 100%;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
