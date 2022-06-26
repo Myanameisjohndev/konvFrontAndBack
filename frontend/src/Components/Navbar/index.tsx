@@ -1,11 +1,13 @@
 import React, {
   Dispatch, SetStateAction, useEffect, useState,
 } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Close from '../../assets/ci_close-big.svg';
 import { useContextApp } from '../../Context';
-import { Icon, NavbarContainer, NavOption } from './styles';
+import {
+  Icon, NavbarContainer, NavLink, NavOption,
+} from './styles';
 
 interface INavbar{
   open: boolean;
@@ -35,13 +37,16 @@ const Navbar = ({ open, setOpen }:INavbar) => {
   const logoutUser = () => {
     setUser(undefined);
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/');
   };
 
   return (
     <NavbarContainer style={{ width: `${initialSIze ? 30 : 0}%` }}>
       <Icon src={Close} onClick={() => setClose(true)} />
       <NavOption onClick={logoutUser}>Sair</NavOption>
+      <NavLink to="/dashboard"><NavOption >Dashboard</NavOption></NavLink>
+      <NavLink to="/dashboard/deposit"><NavOption >Depositar</NavOption></NavLink>
+      <NavLink to="/dashboard/withdraw"><NavOption >Sacar</NavOption></NavLink>
     </NavbarContainer>
   );
 };

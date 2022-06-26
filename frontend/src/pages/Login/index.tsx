@@ -46,15 +46,16 @@ const Login = () => {
           <H1>Login account bank</H1>
         </Header>
         <InputContainer>
-          <Input placeholder='Password: '
-            value={password}
-            onChange={(e) => setPaword(e.target.value)}
-          />
-        </InputContainer>
-        <InputContainer>
           <Input placeholder='Cpf: '
              value={cpf}
              onChange={(e) => setCpf(e.target.value)}
+          />
+        </InputContainer>
+        <InputContainer>
+          <Input placeholder='Password: '
+            type="password"
+            value={password}
+            onChange={(e) => setPaword(e.target.value)}
           />
         </InputContainer>
         <Button onClick={(e) => LoginUser(e)}>Login</Button>

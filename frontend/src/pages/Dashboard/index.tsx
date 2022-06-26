@@ -5,7 +5,17 @@ import Navbar from '../../Components/Navbar';
 import { useContextApp } from '../../Context';
 import { H1, ContainerAuth } from '../../global/styles/globals';
 import {
-  Container, HeaderDashboard, Text, TextSecondary, RowText, Content, IconNav,
+  Container,
+  HeaderDashboard,
+  Text,
+  TextSecondary,
+  RowText,
+  Content,
+  IconNav,
+  AreaCard,
+  CardValues,
+  Row,
+  CardValueTextSecondary,
 } from './styles';
 
 const Dashboard = () => {
@@ -23,11 +33,22 @@ const Dashboard = () => {
         <Text>Gerencie suas operações de forma mais eficaz</Text>
         </HeaderDashboard>
         <Content>
+          <Row>
             {!open ? (
-              <IconNav src={Bars} onClick={() => setOpen(true)}/>
+                <IconNav src={Bars} onClick={() => setOpen(true)}/>
+
             )
               : <Navbar open={open} setOpen={setOpen}/>
-            }
+              }
+                <AreaCard>
+                  <CardValues>
+                    <CardValueTextSecondary>Saldo</CardValueTextSecondary>
+                    <CardValueTextSecondary>
+                      {user?.account_value.toFixed(2).replace('.', ',')}
+                    </CardValueTextSecondary>
+                  </CardValues>
+                </AreaCard>
+              </Row>
         </Content>
       </Container>
     </ContainerAuth>

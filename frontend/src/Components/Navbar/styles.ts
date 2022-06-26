@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const NavbarContainer = styled.div`
   background-color: ${({ theme }) => theme.COLORS.DARK_GREY};
   display: flex;
-  /* align-items: center; */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   justify-content: flex-start;
   flex-direction: column;
   height: 100%;
@@ -26,6 +27,19 @@ export const Icon = styled.img`
   height: 25px;
   margin: 10px;
   cursor: pointer;
+  @media(max-width: 800px) {
+    width: 15px;
+    height: 15px;
+    margin: 5px;
+  }
+  @media(max-width: 600px) {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+  }
+  @media(max-width: 300px) {
+    margin: 5px;
+  }
 `;
 
 export const NavOption = styled.h1`
@@ -38,18 +52,26 @@ export const NavOption = styled.h1`
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
   @media(max-width: 800px) {
     font-size: 15px;
+    height: 30px;
   }
   @media(max-width: 600px) {
-    font-size: 10px;
+    font-size: 8px;
+    height: 25px;
   }
   @media(max-width: 300px) {
     font-size: 5px;
+    height: 20px;
   }
 
   &:hover{
     background-color: ${({ theme }) => theme.COLORS.DARK_GREY_SECONDARY};
   }
 
+`;
+
+export const NavLink = styled(Link)`
+  text-decoration: none;
 `;
